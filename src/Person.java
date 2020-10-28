@@ -20,6 +20,11 @@ public class Person {
         return p.firstName + " " + p.lastName;
     }
 
+    /**
+     * getAge är en klassmetod som beräknar ålder
+     * @param p är en referens till ett objekt av typen Person
+     * @return ålder
+     */
     public static int getAge(Person p){
         // Hämta aktuellt år
        String calendar = Calendar.getInstance().getTime().toString();
@@ -39,5 +44,35 @@ public class Person {
         //System.out.println(age);
 
         return age;
+    }
+
+    /**
+     * En klassmetod som beräknar BMI
+     * @param p är en referensvariabel av typen Person
+     * @return BMI
+     */
+    public static double getBMI(Person p){
+        // BMI = vikt / (längd * längd)
+        return p.weight / (p.height * p.height);
+    }
+
+    /**
+     *  En klassmetod som returnerar viktklassen
+     * @param p är en person
+     * @return viktklassen
+     */
+    public static String getBMICategory(Person p){
+
+        double BMI = Person.getBMI(p);
+
+        String category;
+        if(BMI < 18.5)
+            category = "undervikt";
+        else if(BMI < 25)
+            category = "Normalvikt";
+        else
+            category = "Övervikt";
+
+        return category;
     }
 }
